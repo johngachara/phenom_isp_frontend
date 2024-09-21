@@ -4,9 +4,15 @@ import { Button, useToast } from '@chakra-ui/react';
 const InstallableApp = () => {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [showInstallButton, setShowInstallButton] = useState(false);
+    const [isRunningAsPWA, setIsRunningAsPWA] = useState(false);
     const toast = useToast();
 
     useEffect(() => {
+        // Check if the app is running as a PWA
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            setIsRunningAsPWA(true);
+        }
+
         const handleBeforeInstallPrompt = (e) => {
             e.preventDefault();
             setDeferredPrompt(e);
@@ -22,6 +28,7 @@ const InstallableApp = () => {
                 duration: 3000,
                 isClosable: true,
             });
+            setIsRunningAsPWA(true);
         };
 
         window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -46,6 +53,10 @@ const InstallableApp = () => {
             setDeferredPrompt(null);
         }
     };
+
+    if (isRunningAsPWA) {
+        return null; // Don't render anything if running as PWA
+    }
 
     return (
         <>
