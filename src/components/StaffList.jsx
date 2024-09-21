@@ -44,6 +44,9 @@ const StaffList = ({ staff, onEdit, isLoading,onDelete }) => {
                                 <Button colorScheme="blue" size="sm" onClick={() => onEdit(member)}>
                                     Edit
                                 </Button>
+                                <Button colorScheme="red"  size="sm" onClick={() => onDelete(member)} >
+                                    Delete
+                                </Button>
                             </HStack>
                         </VStack>
                     </Box>
