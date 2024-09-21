@@ -12,6 +12,7 @@ import { Link as ChakraLink } from '@chakra-ui/react';
 import {Link as RouterLink, useNavigate} from 'react-router-dom';
 import HomeBody from "./HomeBody.jsx";
 import {useAuth} from "./auth.js";
+import InstallableApp from "./InstallableApp.jsx";
 
 const Home = () => {
     const [customers, setCustomers] = useState([]);
@@ -252,7 +253,7 @@ const Home = () => {
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </InputGroup>
-
+                    <InstallableApp />
                     {loading || authLoading ? (
                         <Box overflowX="auto" width="100%">
                             <Skeleton height="40px" mb="4" />
