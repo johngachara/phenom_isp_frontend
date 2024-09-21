@@ -17,9 +17,9 @@ export default defineConfig({
       registerType: 'autoUpdate', // or 'prompt'
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Phenom Ventures LTD',
-        short_name: ' Phenom',
-        description: 'Phenom Ventures LTD',
+      name: 'Phenom Ventures ISP Manager',
+      short_name: 'Phenom ISP',
+      description: 'Comprehensive ISP management system by Phenom Ventures for efficient network operations and customer service',
         theme_color: '#ffffff',
         icons: [
           {

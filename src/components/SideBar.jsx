@@ -1,9 +1,11 @@
 import { Box, VStack, Icon, Text, Flex, Button, Drawer, DrawerContent, DrawerOverlay, DrawerCloseButton, useDisclosure } from '@chakra-ui/react';
-import { FiHome, FiUsers, FiLogOut, FiMenu,FiRefreshCw } from 'react-icons/fi';
+import { FiHome, FiUsers, FiLogOut, FiMenu, FiRefreshCw } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import apiService from "../apiService.js";
-import {useAuth} from "./auth.js";
-import {getAuth} from "../firebase.js";
+import { useAuth } from "./auth.js";
+import { getAuth } from "../firebase.js";
+import InstallableApp from "./InstallableApp.jsx";
+
 
 const SidebarItem = ({ icon, children, to, onClose }) => (
     <Flex
@@ -48,32 +50,31 @@ const SidebarContent = ({ onClose }) => {
     };
 
     const refreshPage = () => {
-        window.location.reload(); // Reloads the page
+        window.location.reload();
     };
 
     return (
         <VStack align="stretch" spacing={4} mt={8}>
             <SidebarItem icon={FiHome} to="/" onClose={onClose}>
-               Customers
+                Customers
             </SidebarItem>
 
-            {/* Conditionally render Staff button if userRole is admin */}
             {userRole === 'admin' && (
                 <SidebarItem icon={FiUsers} to="/Staff" onClose={onClose}>
                     Staff
                 </SidebarItem>
             )}
 
-
             <Button
                 leftIcon={<FiRefreshCw />}
                 colorScheme="blue"
                 variant="ghost"
-
                 onClick={refreshPage}
             >
                 Refresh
             </Button>
+
+            <InstallableApp />
 
             <Button
                 leftIcon={<FiLogOut />}
@@ -94,10 +95,8 @@ const SidebarContent = ({ onClose }) => {
 const Sidebar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-
     return (
         <>
-            {/* Mobile Menu Icon */}
             <Box
                 display={{ base: "flex", md: "none" }}
                 alignItems="center"
@@ -111,16 +110,12 @@ const Sidebar = () => {
                 w="full"
                 zIndex="1"
             >
-                {/* Mobile Menu Icon */}
                 <Icon as={FiMenu} w={8} h={8} cursor="pointer" onClick={onOpen} />
-
-                {/* Centered Heading */}
                 <Text fontSize="lg" fontWeight="bold" textAlign="center" flex="1">
-                   Phenom Ventures LTD
+                    Phenom Ventures LTD
                 </Text>
             </Box>
 
-            {/* Sidebar for larger screens */}
             <Box
                 display={{ base: "none", md: "block" }}
                 bg="white"
@@ -134,7 +129,6 @@ const Sidebar = () => {
                 <SidebarContent onClose={() => {}} />
             </Box>
 
-            {/* Sidebar Drawer for mobile screens */}
             <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="full">
                 <DrawerOverlay />
                 <DrawerContent>

@@ -253,7 +253,7 @@ const Home = () => {
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </InputGroup>
-                    <InstallableApp />
+
                     {loading || authLoading ? (
                         <Box overflowX="auto" width="100%">
                             <Skeleton height="40px" mb="4" />

@@ -1,7 +1,9 @@
 {
-  "name": "Phenom Ventures LTD",
-  "short_name": "Phenom ",
-  "description": "Phenom Ventures LTD",
+
+  "name": "Phenom Ventures ISP Manager",
+  "short_name": "Phenom ISP",
+  "description": "Comprehensive ISP management system by Phenom Ventures for efficient network operations and customer service",
+
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
