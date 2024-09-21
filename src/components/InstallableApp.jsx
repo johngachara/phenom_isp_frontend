@@ -50,7 +50,7 @@ const InstallableApp = () => {
     return (
         <>
             {showInstallButton && (
-                <Button colorScheme="blue" onClick={handleInstallClick}>
+                <Button colorScheme="blue" variant="ghost" onClick={handleInstallClick}>
                     Install App
                 </Button>
             )}
